@@ -1,0 +1,38 @@
+
+# 11/12/2023
+
+# Colab T4 GPU 
+# homework initial implementation, following instructions: 
+
+# _ = bert_finetune.fit(
+#     dynasent_r1['train']['sentence'],
+#     dynasent_r1['train']['gold_label'])
+
+# Stopping after epoch 11. Validation score did not improve by tol=1e-05 for more than 5 epochs. Final error is 483.9803138807765CPU times: user 1h 21min 4s, sys: 19.6 s, total: 1h 21min 24s
+# Wall time: 1h 22min 25s
+preds = bert_finetune.predict(sst['validation']['sentence'])
+print(classification_report(sst['validation']['gold_label'], preds, digits=3))
+
+#               precision    recall  f1-score   support
+
+#     negative      0.603     0.514     0.555       428
+#      neutral      0.284     0.406     0.334       229
+#     positive      0.625     0.574     0.599       444
+
+#     accuracy                          0.516      1101
+#    macro avg      0.504     0.498     0.496      1101
+# weighted avg      0.545     0.516     0.527      1101
+
+
+preds = bert_finetune.predict(dynasent_r1['validation']['sentence'])
+print(classification_report(dynasent_r1['validation']['gold_label'], preds, digits=3))
+#               precision    recall  f1-score   support
+
+#     negative      0.795     0.496     0.611      1200
+#      neutral      0.635     0.868     0.733      1200
+#     positive      0.695     0.701     0.698      1200
+
+#     accuracy                          0.688      3600
+#    macro avg      0.708     0.688     0.681      3600
+# weighted avg      0.708     0.688     0.681      3600
+
